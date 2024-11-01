@@ -24,4 +24,13 @@ export default class Carrito {
         return total.toFixed(2);
     }
 
+    obtenerInformacionCarrito() {
+        return Array.from(this.#myProducts.entries()).map(([sku, { unidades, price }]) => ({
+            sku,
+            unidades,
+            price,
+            total: (unidades * price).toFixed(2)
+        }));
+    }
+
 }
