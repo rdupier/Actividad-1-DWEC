@@ -1,3 +1,6 @@
+import Carrito from "./carrito.js";
+
+const carrito = new Carrito();
 
 document.addEventListener("DOMContentLoaded", function (event) {
     let miCurrency;
