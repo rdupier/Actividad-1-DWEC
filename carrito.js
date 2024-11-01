@@ -16,4 +16,12 @@ export default class Carrito {
         this.#numProducts = this.#myProducts.size;
     }
 
+    calcularTotal() {
+        let total = 0;
+        for (const { unidades, price } of this.#myProducts.values()) {
+            total += price * unidades;
+        }
+        return total.toFixed(2);
+    }
+
 }
