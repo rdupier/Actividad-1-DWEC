@@ -96,6 +96,55 @@ document.addEventListener("DOMContentLoaded", function (event) {
         
                     function actualizarTotal() {
                         
+                        const cantidadActual = parseInt(cantidadNum.value) || 0;
+
+                        total.innerText = (precioUnidadTotal * cantidadActual).toFixed(2);
+        
+                        // Llama a la funcion actualizarUnidades de la clase Carrito
+                        carrito.actualizarUnidades(
+                            output.sku,
+                            cantidadActual,
+                            precioUnidadTotal
+                        );
+        
+                        // Llama a la funcion obtenerInformacionCarrito de la clase Carrito
+                        const infoCarrito = carrito.obtenerInformacionCarrito();
+        
+                        infoCarrito.forEach((producto) => {
+                            console.log(
+                                `Producto: ${producto.sku}, Unidades: ${producto.unidades
+                                }, Precio unitario: ${producto.price.toFixed(2)}, Total: ${producto.total
+                                }`
+                            );
+                        });
+        
+                        // Llama a la funcion cacularTotal de la clase Carrito
+                        const totalCarrito = carrito.calcularTotal();
+                        console.log("Total del carrito:", totalCarrito);
+        
+                        const listaProductosDiv = document.getElementById("listaProductos");
+                        listaProductosDiv.innerHTML = ""; 
+                        infoCarrito.forEach((producto) => {
+                          
+                            const title = products.find(p => p.SKU === producto.sku).title;
+                
+                            const item = document.createElement("div");
+                            item.innerText = `${producto.unidades} x ${title}`; 
+        
+                            const precioItem = document.createElement("div");
+                            const precioUnitario =
+                                parseFloat(products.find((p) => p.SKU === producto.sku)?.price) ||
+                                0; 
+                            precioItem.innerText = `${producto.unidades
+                                } x ${precioUnitario.toFixed(2)}€`; 
+                            precioItem.style.marginLeft = "20px"; 
+        
+                            listaProductosDiv.appendChild(item);
+                            listaProductosDiv.appendChild(precioItem);
+                        });
+        
+                        document.getElementById("montoTotal").innerText = totalCarrito; 
+                        
                     }
                     
             const tr = document.createElement("tr");
