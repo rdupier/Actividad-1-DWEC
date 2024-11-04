@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     ).toFixed(2);
         
                     function actualizarTotal() {
-                        
+
                         const cantidadActual = parseInt(cantidadNum.value) || 0;
 
                         total.innerText = (precioUnidadTotal * cantidadActual).toFixed(2);
@@ -129,6 +129,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                             const title = products.find(p => p.SKU === producto.sku).title;
                 
                             const item = document.createElement("div");
+                            item.classList.add("producto"); 
                             item.innerText = `${producto.unidades} x ${title}`; 
         
                             const precioItem = document.createElement("div");
@@ -136,14 +137,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
                                 parseFloat(products.find((p) => p.SKU === producto.sku)?.price) ||
                                 0; 
                             precioItem.innerText = `${producto.unidades
-                                } x ${precioUnitario.toFixed(2)}€`; 
-                            precioItem.style.marginLeft = "20px"; 
+                                } x ${precioUnitario.toFixed(2)} €`; 
+                            precioItem.classList.add("precio"); 
         
                             listaProductosDiv.appendChild(item);
                             listaProductosDiv.appendChild(precioItem);
                         });
         
-                        document.getElementById("montoTotal").innerText = totalCarrito; 
+                        document.getElementById("total").innerText = `${totalCarrito} €`;  
                         
                     }
                     
