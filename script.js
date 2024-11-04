@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let miCurrency;
     let products = [];
 
-    fetch("https://jsonblob.com/api/1300799779502940160")
+    fetch("http://jsonblob.com/api/1303086686257668096")
         .then((response) => response.json())
 
         .then((currency) => {
