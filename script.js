@@ -5,8 +5,8 @@ const carrito = new Carrito();
 document.addEventListener("DOMContentLoaded", function (event) {
     let miCurrency;
     let products = [];
-
-    fetch("http://jsonblob.com/api/1303086686257668096")
+           
+    fetch("https://jsonblob.com/api/1303086686257668096")
         .then((response) => response.json())
 
         .then((currency) => {
